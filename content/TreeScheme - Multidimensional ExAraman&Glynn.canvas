@@ -1,0 +1,188 @@
+{
+	"nodes":[
+		{"id":"notation","type":"text","text":"<h1 style=\"text-align: center;\">NOTATION AND SCALES</h1>\n\n## Notation:\n$$\n\\begin{aligned}\n&S_n:=\\sum_{j=1}^{n}X_j \\\\[4pt]\n&R(m,n):=\\mathbb{E}[S_mS_n] \\\\[4pt]\n&V(n):=\\mathbb{E}[S_n^2]=R(n,n) \\\\[4pt]\n&\\Delta V(n):=V(n)-V(n-1) \\\\[4pt]\n&R(m,n)=\\frac12\\bigl(V(m)+V(n)-V(|m-n|)\\bigr) \\\\[4pt]\n\\end{aligned}\n$$\n## Scale\n$$\n\\begin{aligned}\n&V(n)\\asymp n^{2H}L(n) \\\\[4pt]\n&\\Delta V(n)\\asymp n^{2H-1}L(n) \\\\[4pt]\n&\\Delta V(n)-\\Delta V(n-1)\\asymp n^{2H-2}L(n) \\\\[4pt]\n\\end{aligned}\n$$","x":660,"y":-1620,"width":1100,"height":700,"color":"6"},
+		{"id":"mainid","type":"text","text":"<h1 style=\"text-align: center;\">MAIN IDENTITY</h1>\n\nDefine\n$$\nD_{k,\\ell}:=R(k-1,\\ell-1)R(k,\\ell)-R(k-1,\\ell)R(k,\\ell-1)\n$$\nwe have\n$$\n\\mathbb{E}[A_N^2]=2\\sum_{k=1}^{N}\\sum_{\\ell=1}^{N}D_{k,\\ell}\n$$","x":830,"y":-720,"width":760,"height":380,"color":"6"},
+		{"id":"decomp","type":"text","text":"<h1 style=\"text-align: center;\">DECOMPOSITION BY DIAGONALS</h1>\n\nSet $d=k-\\ell.$ Then\n$$\\begin{aligned}\n\\sum_{k=1}^{N}\\sum_{\\ell=1}^{N}D_{k,\\ell}\n&=\n\\sum_{|d|\\le \\lfloor \\theta N\\rfloor}\n\\sum_{\\ell=\\max(1,1-d)}^{\\min(N,N-d)}D_{\\ell+d,\\ell}\\\\[4pt]\n&\\qquad+\n\\sum_{|d|> \\lfloor \\theta N\\rfloor}\n\\sum_{\\ell=\\max(1,1-d)}^{\\min(N,N-d)}D_{\\ell+d,\\ell}.\n\\end{aligned}$$","x":830,"y":-200,"width":760,"height":400,"color":"5"},
+		{"id":"goal","type":"text","text":"<h1 style=\"text-align: center;\">GOAL</h1>\n\nDefine\n$$\nA_N:=\\sum_{k=1}^{N}\\sum_{r=1}^{k-1}\\bigl(X_r^1X_k^2-X_k^1X_r^2\\bigr)\n$$\nWe want to have\n$$\n\\mathbb{E}[A_N^2] \\le C\\,N^{4H}L(N)^2.\n$$","x":950,"y":-2240,"width":520,"height":400,"color":"6"},
+		{"id":"fixd","type":"text","text":"<h2 style=\"text-align: center;\">Near Diagonal Term</h2>\n\nIn this case,  $|d| \\le \\ff{\\theta N}$, for $\\theta \\in (0,1)$.\n\nSplit the sum in $d=0$ and $d \\ge 1$\n$$\n\\sum_{|d|\\le \\lfloor \\theta N\\rfloor} \\sum_{\\ell=\\max(1,1-d)}^{\\min(N,N-d)}D_{\\ell+d,\\ell}\n= \\sum_{\\ell=1}^{N}D_{\\ell,\\ell} + 2\\sum_{d=1}^{\\lfloor \\theta N\\rfloor}\\sum_{\\ell=1}^{N-d}D_{\\ell+d,\\ell}.\n$$","x":50,"y":440,"width":810,"height":390,"color":"5"},
+		{"id":"expandD","type":"text","text":"<h2 style=\"text-align: center;\">Off-Diagonal Term</h2>\n\nFor $d\\ge 1$,\n$$\n\\begin{aligned}\nD_{\\ell+d,\\ell}\n&=-\\frac14\\,\\Delta V(\\ell+d)\\Delta V(\\ell)\\\\[4pt]\n&\\quad+\\frac12R(\\ell+d-1,\\ell)\\,\\Delta V(d+1)\\\\[4pt]\n&\\quad-\\frac12R(\\ell+d,\\ell-1)\\,\\Delta V(d).\n\\end{aligned}\n$$\n\nThen\n$$\n\\begin{aligned}\n\\sum_{\\ell=1}^{N-d}D_{\\ell+d,\\ell} &= -\\frac14\\sum_{\\ell=1}^{N-d}\\Delta V(\\ell+d)\\Delta V(\\ell)\\\\ &\\quad +\\frac12\\,\\Delta V(d+1)\\sum_{\\ell=1}^{N-d}R(\\ell+d-1,\\ell)\\\\ &\\quad -\\frac12\\,\\Delta V(d)\\sum_{\\ell=1}^{N-d}R(\\ell+d,\\ell-1).\n\\end{aligned}\n$$\nAdding and subtracting the right term, we obtain\n$$\n\\begin{aligned}\n\\sum_{\\ell=1}^{N-d}D_{\\ell+d,\\ell}\n&=\n\\frac12\\bigl(\\Delta V(d+1)-\\Delta V(d)\\bigr)\\sum_{\\ell=1}^{N-d}R(\\ell+d-1,\\ell)\\\\\n&\\qquad\n-\\frac14\\sum_{\\ell=1}^{N-d}\\Delta V(\\ell+d)\\Delta V(\\ell)\\\\\n&\\qquad\n+\\frac12\\,\\Delta V(d)\\left(\n\\sum_{\\ell=1}^{N-d}R(\\ell+d-1,\\ell)\n-\n\\sum_{\\ell=1}^{N-d}R(\\ell+d,\\ell-1)\n\\right).\n\\end{aligned}\n$$","x":830,"y":1110,"width":790,"height":1040,"color":"5"},
+		{
+			"id":"bcd696336a72f963",
+			"type":"text",
+			"text":"$$\n{\\large \\text{Before summing over }d, \\text{ we split in two cases}}\n$$",
+			"styleAttributes":{},
+			"x":908,
+			"y":2280,
+			"width":635,
+			"height":92
+		},
+		{"id":"fb7ad784b47f041b","type":"text","text":"<h2 style=\"text-align: center;\">Off-Diagonal Term</h2>\n\nFor $d = 1$,\n$$\nD_{\\ell,\\ell} = V(\\ell-1)V(\\ell) - \\frac14\\bigl(V(\\ell-1)+V(\\ell)-V(1)\\bigr)^2.\n$$\nThen\n$$\n\\sum_{\\ell=1}^{N}D_{\\ell,\\ell} = \\Delta V(1)\\sum_{\\ell=1}^{N-1}V(\\ell) - \\frac14\\sum_{\\ell=1}^{N}\\bigl(\\Delta V(\\ell)-\\Delta V(1)\\bigr)^2.\n$$","x":-790,"y":1110,"width":810,"height":420,"color":"6"},
+		{"id":"sbp","type":"text","text":"<h2 style=\"text-align: center;\">Summation by Parts</h2>\n\nWe take the first term and sum over $d$:\n$$\n\\begin{aligned}\n&\\frac12 \\sum_{d=1}^{\\ff{\\theta N}}\n\\bigl(\\Delta V(d+1)-\\Delta V(d)\\bigr)\\sum_{\\ell=1}^{N-d}R(\\ell+d-1,\\ell).\n\\end{aligned}\n$$\n\nApplying summation by parts, we obtain\n$$\n\\begin{aligned}\n&\\frac12 \\sum_{\\ell=1}^{N-\\ff{\\theta N}-1} R(\\ell+\\ff{\\theta N},\\ell)\\,\\Delta V(\\ff{\\theta N}+1) \\\\\n&\\quad\n-\\frac12 \\sum_{\\ell=1}^{N-1} R(\\ell,\\ell)\\,\\Delta V(1) \\\\\n&\\quad\n-\\frac12 \\sum_{d=1}^{\\ff{\\theta N}}\n\\Delta V(d+1)\n\\left(\n\\sum_{\\ell=1}^{N-d-1} R(\\ell+d,\\ell)\n-\\sum_{\\ell=1}^{N-d} R(\\ell+d-1,\\ell)\n\\right).\n\\end{aligned}\n$$\n\nReducing the last term, we get\n$$\n\\begin{aligned}\n&\\frac12 \\sum_{d=1}^{\\ff{\\theta N}}\n\\bigl(\\Delta V(d+1)-\\Delta V(d)\\bigr)\\sum_{\\ell=1}^{N-d}R(\\ell+d-1,\\ell) \\\\\n&=\n\\frac12 \\sum_{\\ell=1}^{N-\\ff{\\theta N}-1} R(\\ell+\\ff{\\theta N},\\ell)\\,\\Delta V(\\ff{\\theta N}+1) \\\\\n&\\quad\n-\\frac12 \\sum_{\\ell=1}^{N-1} R(\\ell,\\ell)\\,\\Delta V(1) \\\\\n&\\quad\n+\\frac14 \\sum_{d=1}^{\\ff{\\theta N}}\n\\Delta V(d+1)\\Bigl(V(N-d)+(N-d)\\Delta V(d)\\Bigr).\n\\end{aligned}\n$$","x":20,"y":2600,"width":810,"height":1040,"color":"6"},
+		{"id":"225e3d548d5aa05a","type":"text","text":"<h2 style=\"text-align: center;\">Rest of the Term</h2>\n\nWe take the second and the third term\n$$\n\\begin{aligned}\n&-\\frac14 \\sum_{d=1}^{\\ff{\\theta N}} \\sum_{\\ell=1}^{N-d}\\Delta V(\\ell+d)\\Delta V(\\ell)\\\\\n&\\qquad\n+\\frac12\\,\\sum_{d=1}^{\\ff{\\theta N}}\\Delta V(d)\\left(\n\\sum_{\\ell=1}^{N-d}R(\\ell+d-1,\\ell)\n-\n\\sum_{\\ell=1}^{N-d}R(\\ell+d,\\ell-1)\n\\right).\n\\end{aligned}\n$$\n\nReducing the second term, we get\n$$\n\\begin{aligned}\n&-\\frac14 \\sum_{d=1}^{\\ff{\\theta N}} \\sum_{\\ell=1}^{N-d}\\Delta V(\\ell+d)\\Delta V(\\ell)\\\\\n&\\quad\n+\\frac14\\sum_{d=1}^{\\ff{\\theta N}}\\Delta V(d)\\Bigl(\nV(N-d)-V(N) \\\\\n& \\qquad +V(d)+(N-d)\\bigl(\\Delta V(d)+\\Delta V(d+1)\\bigr)\n\\Bigr).\n\\end{aligned}\n$$","x":1620,"y":2600,"width":810,"height":680,"color":"6"},
+		{"id":"964080d0074547ed","type":"text","text":"","x":4030,"y":830,"width":810,"height":210},
+		{"id":"far","type":"text","text":"<h1 style=\"text-align: center;\">FAR FROM DIAGONAL</h1>\n\n$$|d|>\\theta N$$","x":4030,"y":440,"width":810,"height":160,"color":"5"},
+		{"id":"3a2eb0487a74449b","type":"text","text":"<h2 style=\"text-align: center;\">Adding Everything</h2>\n\nAdding the contribution of the diagonal term $d=0$, the result of the summation by parts, and the remaining terms for $d\\ge 1$, we obtain\n$$\n\\begin{aligned}\n&\\sum_{\\ell=1}^{N}D_{\\ell,\\ell}\n+ 2\\sum_{d=1}^{\\ff{\\theta N}}\\sum_{\\ell=1}^{N-d}D_{\\ell+d,\\ell} \\\\[6pt]\n&=\n\\Delta V(1)\\sum_{\\ell=1}^{N-1}V(\\ell)\n-\\frac14\\sum_{\\ell=1}^{N}\\bigl(\\Delta V(\\ell)-\\Delta V(1)\\bigr)^2 \\\\[6pt]\n&\\quad\n+\\Delta V(\\ff{\\theta N}+1)\\sum_{\\ell=1}^{N-\\ff{\\theta N}-1}R(\\ell+\\ff{\\theta N},\\ell) \\\\[6pt]\n&\\quad\n-\\Delta V(1)\\sum_{\\ell=1}^{N-1}R(\\ell,\\ell) \\\\[6pt]\n&\\quad\n+\\frac12 \\sum_{d=1}^{\\ff{\\theta N}}\n\\Delta V(d+1)\\Bigl(V(N-d)+(N-d)\\Delta V(d)\\Bigr) \\\\[6pt]\n&\\quad\n-\\frac12 \\sum_{d=1}^{\\ff{\\theta N}} \\sum_{\\ell=1}^{N-d}\\Delta V(\\ell+d)\\Delta V(\\ell) \\\\[6pt]\n&\\quad\n+\\frac12\\sum_{d=1}^{\\ff{\\theta N}}\\Delta V(d)\\Bigl(\nV(N-d)-V(N)+V(d) \\\\\n&\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\n+(N-d)\\bigl(\\Delta V(d)+\\Delta V(d+1)\\bigr)\n\\Bigr).\n\\end{aligned}\n$$\n\nThen, observing the exact cancellation $R(\\ell,\\ell)=V(\\ell)$, we obtain\n$$\n\\begin{aligned}\n&\\sum_{\\ell=1}^{N}D_{\\ell,\\ell}\n+ 2\\sum_{d=1}^{\\ff{\\theta N}}\\sum_{\\ell=1}^{N-d}D_{\\ell+d,\\ell} \\\\[6pt]\n&=\n-\\frac14\\sum_{\\ell=1}^{N}\\bigl(\\Delta V(\\ell)-\\Delta V(1)\\bigr)^2 \\\\[6pt]\n&\\quad\n+\\Delta V(\\ff{\\theta N}+1)\\sum_{\\ell=1}^{N-\\ff{\\theta N}-1}R(\\ell+\\ff{\\theta N},\\ell) \\\\[6pt]\n&\\quad\n+\\frac12 \\sum_{d=1}^{\\ff{\\theta N}}\n\\Delta V(d+1)\\Bigl(V(N-d)+(N-d)\\Delta V(d)\\Bigr) \\\\[6pt]\n&\\quad\n-\\frac12 \\sum_{d=1}^{\\ff{\\theta N}} \\sum_{\\ell=1}^{N-d}\\Delta V(\\ell+d)\\Delta V(\\ell) \\\\[6pt]\n&\\quad\n+\\frac12\\sum_{d=1}^{\\ff{\\theta N}}\\Delta V(d)\\Bigl(\nV(N-d)-V(N)+V(d) \\\\\n&\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\n+(N-d)\\bigl(\\Delta V(d)+\\Delta V(d+1)\\bigr)\n\\Bigr).\n\\end{aligned}\n$$","x":-790,"y":4240,"width":810,"height":1680,"color":"5"},
+		{"id":"4bff4d5256f201df","type":"text","text":"<h2 style=\"text-align: center;\">Third Term</h2>\n\n","x":-789,"y":6880,"width":810,"height":521,"color":"6"},
+		{"id":"ec42d33f32a5f68d","type":"text","text":"<h2 style=\"text-align: center;\">Fourth term</h2>\n\n","x":426,"y":6880,"width":810,"height":521,"color":"6"},
+		{"id":"657aaa6e25a0da12","type":"text","text":"<h2 style=\"text-align: center;\">Fifth term</h2>\n\n","x":1641,"y":6880,"width":810,"height":521,"color":"6"},
+		{"id":"e2ddb8769d662781","type":"text","text":"<h2 style=\"text-align: center;\">First Term</h2>\n\nWe now estimate the first term\n$$\nT_1:=-\\frac14\\sum_{\\ell=1}^{N}\\bigl(\\Delta V(\\ell)-\\Delta V(1)\\bigr)^2.\n$$\n\nBy the asymptotic behavior of $\\Delta V$, there exist $n_0\\in\\N$ and $c_1>0$ such that, for every $n\\ge n_0$,\n$$\n|\\Delta V(n)|\\le c_1\\,n^{2H-1}L(n).\n$$\nThen,\n$$\n|T_1|\n\\le\nc_2\n+c_3\\,N^{4H-1}\n+ \\frac{N}{2}|\\Delta V(1)|^2.\n$$\nFinally, since $H\\in(1/3,1/2)$, we have $4H>1$, so\n$$\n|T_1|\n\\le\nC_1\\,N^{4H}L(N)^2.\n$$\n","x":-3219,"y":6880,"width":810,"height":680,"color":"6"},
+		{"id":"326a478ad1ab406f","type":"text","text":"<h2 style=\"text-align: center;\">Second Term</h2>\n\n","x":-2004,"y":6880,"width":810,"height":521,"color":"6"},
+		{
+			"id":"b6033db3dac5856b",
+			"type":"text",
+			"text":"$$\n{\\large \\text{We now calculate the orden of each term}}\n$$",
+			"styleAttributes":{},
+			"x":-702,
+			"y":6160,
+			"width":635,
+			"height":92
+		}
+	],
+	"edges":[
+		{"id":"e3","fromNode":"mainid","fromSide":"bottom","toNode":"decomp","toSide":"top"},
+		{"id":"e_fixd_expandD","fromNode":"fixd","fromSide":"bottom","toNode":"expandD","toSide":"top"},
+		{"id":"e_decomp_far","fromNode":"decomp","fromSide":"bottom","toNode":"far","toSide":"top"},
+		{"id":"e1","toFloating":false,"fromNode":"goal","fromSide":"bottom","toNode":"notation","toSide":"top"},
+		{"id":"e2","fromNode":"notation","fromSide":"bottom","toNode":"mainid","toSide":"top"},
+		{
+			"id":"6b4b20e753892b54",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"decomp",
+			"fromSide":"bottom",
+			"toNode":"fixd",
+			"toSide":"top"
+		},
+		{
+			"id":"8c2bd9fc42e40364",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"fixd",
+			"fromSide":"bottom",
+			"toNode":"fb7ad784b47f041b",
+			"toSide":"top"
+		},
+		{
+			"id":"66d34f5e6e233674",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromFloating":false,
+			"fromNode":"bcd696336a72f963",
+			"fromSide":"bottom",
+			"toNode":"sbp",
+			"toSide":"top"
+		},
+		{
+			"id":"8fcb7d1065aa2d29",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromFloating":false,
+			"fromNode":"bcd696336a72f963",
+			"fromSide":"bottom",
+			"toNode":"225e3d548d5aa05a",
+			"toSide":"top"
+		},
+		{
+			"id":"d782245d261fe114",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromFloating":false,
+			"fromNode":"expandD",
+			"fromSide":"bottom",
+			"toNode":"bcd696336a72f963",
+			"toSide":"top",
+			"toEnd":"none"
+		},
+		{
+			"id":"acbbd3829d321f93",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"fb7ad784b47f041b",
+			"fromSide":"bottom",
+			"toNode":"3a2eb0487a74449b",
+			"toSide":"top"
+		},
+		{
+			"id":"23488a393bbe3eb4",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"sbp",
+			"fromSide":"bottom",
+			"toNode":"3a2eb0487a74449b",
+			"toSide":"top"
+		},
+		{
+			"id":"da8cf5d9c852d091",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"225e3d548d5aa05a",
+			"fromSide":"bottom",
+			"toNode":"3a2eb0487a74449b",
+			"toSide":"top"
+		},
+		{
+			"id":"5038de027dbfe2d2",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromFloating":false,
+			"fromNode":"b6033db3dac5856b",
+			"fromSide":"bottom",
+			"toNode":"e2ddb8769d662781",
+			"toSide":"top"
+		},
+		{
+			"id":"b27efba42102f8ab",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromFloating":false,
+			"fromNode":"b6033db3dac5856b",
+			"fromSide":"bottom",
+			"toNode":"326a478ad1ab406f",
+			"toSide":"top"
+		},
+		{
+			"id":"3c71090aea360d64",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromFloating":false,
+			"fromNode":"b6033db3dac5856b",
+			"fromSide":"bottom",
+			"toNode":"4bff4d5256f201df",
+			"toSide":"top"
+		},
+		{
+			"id":"7314e79b442619df",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromFloating":false,
+			"fromNode":"b6033db3dac5856b",
+			"fromSide":"bottom",
+			"toNode":"ec42d33f32a5f68d",
+			"toSide":"top"
+		},
+		{
+			"id":"d890382466ae7455",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromFloating":false,
+			"fromNode":"b6033db3dac5856b",
+			"fromSide":"bottom",
+			"toNode":"657aaa6e25a0da12",
+			"toSide":"top"
+		},
+		{
+			"id":"9542180601b918dc",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"3a2eb0487a74449b",
+			"fromSide":"bottom",
+			"toNode":"b6033db3dac5856b",
+			"toSide":"top",
+			"toEnd":"none"
+		}
+	],
+	"metadata":{
+		"version":"1.0-1.0",
+		"frontmatter":{}
+	}
+}
